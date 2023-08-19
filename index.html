@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.cdnfonts.com/css/nexa-bold" rel="stylesheet">
+    <title>Verification</title>
+</head>
+<body>
+    <div class="container">
+        <div class="verification-box">
+            <h1>Welcome to Murtaza's Verification!</h1>
+            <p>Verfy that you are Fatima (Murtaza's Hacker Buddy)</p>
+            <button id="startButton">Start Verification</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+<script>
+    document.getElementById("startButton").addEventListener("click", function() {
+    startVerification();
+});
+
+function startVerification() {
+    const verificationBox = document.querySelector(".verification-box");
+    
+    verificationBox.innerHTML = `
+        <h1>Are You Fatima? 🙃</h1>
+        <p>Prove you're not an alien by clicking the imaginary button below:</p>
+        <button id="step1Button">Click Me!</button>
+    `;
+
+    document.getElementById("step1Button").addEventListener("click", function() {
+        proceedToStep2();
+    });
+}
+
+function proceedToStep2() {
+    const verificationBox = document.querySelector(".verification-box");
+
+    verificationBox.innerHTML = `
+        <h1>Oh no! We need one more step! What Does the Cow Say? </h1>
+        <p>Have you heard a cow talking? Yea? What they say (Max: three letters)</p>
+        <input type="text" id="cowSoundInput" style=" border: 1px solid white; height: 32px; border-radius: 2px; font-size: 14px;background: transparent;">
+        <button id="step2Button">Submit</button>
+    `;
+
+    document.getElementById("step2Button").addEventListener("click", function() {
+        checkCowSoundAnswer();
+    });
+}
+
+function checkCowSoundAnswer() {
+    const cowSoundInput = document.getElementById("cowSoundInput").value.toLowerCase();
+
+    if (cowSoundInput === "moo") {
+        proceedToStep3();
+    } else {
+        alert("Oops! That's not the right answer. Try again!");
+    }
+}
+
+function proceedToStep3() {
+    const verificationBox = document.querySelector(".verification-box");
+
+    verificationBox.innerHTML = `
+        <h1>My Fati is not Color Blind!</h1>
+        <p>Select the RED square from the options below:</p>
+        <div class="color-options">
+            <div class="color-box" id="color1"></div>
+            <div class="color-box" id="color2"></div>
+            <div class="color-box" id="color3"></div>
+            <div class="color-box" id="color4"></div>
+        </div>
+    `;
+
+    const colorBoxes = document.querySelectorAll(".color-box");
+    
+    colorBoxes.forEach(box => {
+        box.addEventListener("click", function() {
+            if (box.id === "color2") {
+                alert("Oops! That's not the red square. Try again!");
+            } else if (box.id === "color1" || box.id === "color3" || box.id === "color4") {
+                // Call the next step function
+                proceedToStep4();
+            }
+        });
+    });
+}
+
+function proceedToStep4() {
+    const verificationBox = document.querySelector(".verification-box");
+
+    verificationBox.innerHTML = `
+        <h1>Last step! Decode this!</h1>
+        <p>Look at the image below and spell the word you see:</p>
+        <img src="por2.png" alt="Mystery Object">
+        <input type="text" id="objectSpellingInput" style=" border: 1px solid white; height: 32px; border-radius: 2px; font-size: 14px;background: transparent;">
+        <button id="step4Button">Submit</button>
+    `;
+
+    document.getElementById("step4Button").addEventListener("click", function() {
+        checkObjectSpelling();
+    });
+}
+
+function checkObjectSpelling() {
+    const objectSpellingInput = document.getElementById("objectSpellingInput").value.toLowerCase();
+
+    if (objectSpellingInput === "poor soul") {
+        proceedToStep5();
+    } else {
+        alert("Wrong miss. Try again!");
+    }
+}
+function proceedToStep5() {
+    const verificationBox = document.querySelector(".verification-box");
+
+    verificationBox.innerHTML = `
+        <h1>Wow! Still not verified? Let's do math! 😂</h1>
+        <p>What is slope in this example: r = tx + y </p>
+        <div class="answer-options">
+            <label class="answer-label">
+                <input type="radio" name="answer" value="t"> t
+            </label>
+            <label class="answer-label">
+                <input type="radio" name="answer" value="x"> x
+            </label>
+            <label class="answer-label">
+                <input type="radio" name="answer" value="r"> r
+            </label>
+            <label class="answer-label">
+                <input type="radio" name="answer" value="y"> y
+            </label>
+        </div>
+        <button id="step5Button">Submit</button>
+    `;
+
+    document.getElementById("step5Button").addEventListener("click", function() {
+        checkStep5Answer();
+    });
+}
+
+
+function checkStep5Answer() {
+    const selectedAnswer = document.querySelector("input[name='answer']:checked");
+
+    if (selectedAnswer && selectedAnswer.value === "t") {
+        proceedToStep6();
+    } else {
+        alert("Oops! That's not the correct answer. Try again!");
+    }
+}
+
+
+
+function proceedToStep6() {
+    const verificationBox = document.querySelector(".verification-box");
+
+    verificationBox.innerHTML = `
+        <h1>Yayy! More Math!! 😂</h1>
+        <p>Fatima, Murtaza, and Sahar hack World Bank and Apple, they gain $13 billion and $7 billion, respectively, when they hack those organizations. On Monday, they hacked both organizations 15 times and made $123 billion. Where are they going at the end of the day?</p>
+        <input type="text" id="answerInput" style=" border: 1px solid white; height: 32px; border-radius: 2px; font-size: 14px;background: transparent;">
+        <button id="step6Button">Submit</button>
+    `;
+
+    document.getElementById("step6Button").addEventListener("click", function() {
+        checkAnswer();
+    });
+}
+
+function checkAnswer() {
+    const answerInput = document.getElementById("answerInput").value.toLowerCase();
+
+    if (answerInput === "jail") {
+        proceedToStep7();
+    } else {
+        alert("Oops! That's not the correct answer. Try again!");
+    }
+}
+
+function proceedToStep7() {
+    const verificationBox = document.querySelector(".verification-box");
+
+    verificationBox.innerHTML = `
+        <h1>Last one! I promise 🫢</h1>
+        <p>Who is the most famous Chinese Author in the world?</p>
+        <input type="text" id="cowSoundInput" style=" border: 1px solid white; height: 32px; border-radius: 2px; font-size: 14px;background: transparent;">
+        <button id="step7Button">Submit</button>
+    `;
+
+    document.getElementById("step7Button").addEventListener("click", function() {
+        checkSoundAnswer();
+    });
+}
+
+function checkSoundAnswer() {
+    const cowSoundInput = document.getElementById("cowSoundInput").value.toLowerCase();
+
+    if (cowSoundInput === "fatima") {
+        proceedToStep8();
+    } else {
+        alert("Wrong answer, try again!");
+    }
+}
+function proceedToStep8() {
+    const verificationBox = document.querySelector(".verification-box");
+
+    verificationBox.innerHTML = `
+        <h1>Why are you sooo tall, again? 😓</h1>
+        <div class="answer-options">
+            <label>
+                <input type="radio" name="answer" value="angle">I want to be hypotenuse in our right  triangle team
+            </label><br>
+            <label>
+                <input type="radio" name="answer" value="pizza">I eat a lot of Pineapple Pizza!
+            </label><br>
+            <label>
+                <input type="radio" name="answer" value="zombies">I kill zombies because they are cute
+            </label><br>
+            <label>
+                <input type="radio" name="answer" value="short">I am an align coming from Mars
+            </label><br>
+        </div>
+        <button id="step8Button">Submit</button>
+    `;
+    document.getElementById("step8Button").addEventListener("click", function() {
+        checkStep8Answer();
+    });
+}
+
+function checkStep8Answer() {
+    const selectedAnswer = document.querySelector("input[name='answer']:checked");
+
+    if (selectedAnswer) {
+        const selectedValue = selectedAnswer.value;
+        
+        if (selectedValue === "angle") {
+            proceedToStep9();
+        } else {
+            alert("Wrong answer. Try again!");
+        }
+    } else {
+        alert("Please select an answer.");
+    }
+}
+function proceedToStep9() {
+    const verificationBox = document.querySelector(".verification-box");
+
+    verificationBox.innerHTML = `
+        <h1>Come on now! I have turst issues 🥲</h1>
+        <p>Who are members of triangle? </p>
+        <div class="answer-options">
+            <label>
+                <input type="radio" name="answer" value="42"> Haji Hunter, Bibi Hiji Fati, Molla Sahar
+            </label><br>
+            <label>
+                <input type="radio" name="answer" value="love">Sanskrit Author Murtaza, Chinese Essayist Fatima, Non-understandable Sahar
+            </label><br>
+            <label>
+                <input type="radio" name="answer" value="pizza">Uncle Murtaza, Big Sis Fatima, Auntie Sahar
+            </label><br>
+            <label>
+                <input type="radio" name="answer" value="energy"> All options are correct
+            </label><br>
+        </div>
+        <button id="step9Button">Submit</button>
+    `;
+
+    document.getElementById("step9Button").addEventListener("click", function() {
+        checkStep9Answer();
+    });
+}
+
+function checkStep9Answer() {
+    const selectedAnswer = document.querySelector("input[name='answer']:checked");
+
+    if (selectedAnswer) {
+        const selectedValue = selectedAnswer.value;
+        
+        if (selectedValue === "energy") {
+            proceedToStep10();
+        } else {
+            alert("Noooo misss, accept that we are weird. Try again!");
+        }
+    } else {
+        alert("Please select an answer.");
+    }
+}
+function proceedToStep10() {
+    const verificationBox = document.querySelector(".verification-box");
+
+    verificationBox.innerHTML = `
+        <h1>I know you gonna block me after that many verfifcation steps 😂 So bye bye</h1>
+        <p>Are members of Triangle weird?</p>
+        <div class="answer-options">
+            <label>
+                <input type="radio" name="answer" value="python">Yes!
+            </label><br>
+            <label>
+                <input type="radio" name="answer" value="javascript">Yes!
+            </label><br>
+            <label>
+                <input type="radio" name="answer" value="java">Yes!
+            </label><br>
+            <label>
+                <input type="radio" name="answer" value="csharp">Yes!
+            </label><br>
+        </div>
+        <button id="step10Button">Submit</button>
+    `;
+
+    document.getElementById("step10Button").addEventListener("click", function() {
+        checkStep10Answer();
+    });
+}
+
+function checkStep10Answer() {
+    const selectedAnswer = document.querySelector("input[name='answer']:checked");
+
+    if (selectedAnswer) {
+        const selectedValue = selectedAnswer.value;
+        
+        if (selectedValue === "csharp") {
+            showFinalConfirmation();
+        } else {
+            alert("Nope!");
+        }
+    } else {
+        alert("Please select an answer.");
+    }
+}
+
+function showFinalConfirmation() {
+    const verificationBox = document.querySelector(".verification-box");
+
+    verificationBox.innerHTML = `
+        <h1>Congratulations, You Are My Bestie Fati!</h1>
+        <iframe src="https://giphy.com/embed/H6oV7ZbFYSTlvoG0R5" width="480" height="266" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/graduate-diploma-you-made-it-H6oV7ZbFYSTlvoG0R5">via GIPHY</a></p>
+        <p>You've successfully completed all verfications</p>
+    `;
+}
+</script>
